@@ -1225,6 +1225,29 @@
                     ]
                 },
                 {
+                    "name": "string.quoted.interpolated.fsharp",
+                    "begin": "(?=[^\\\\])(\\$\")",
+                    "end": "(\")",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "punctuation.definition.string.begin.fsharp"
+                        }
+                    },
+                    "endCaptures": {
+                        "1": {
+                            "name": "punctuation.definition.string.end.fsharp"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#string_formatter"
+                        },
+                        {
+                            "include": "#interpolation"
+                        }
+                    ]
+                },
+                {
                     "name": "string.quoted.triple.fsharp",
                     "begin": "(?=[^\\\\])(\"\"\")",
                     "end": "(\"\"\")",
@@ -1291,6 +1314,86 @@
                 }
             ]
         },
+        "interpolation": {
+			"name": "meta.interpolation.fsharp",
+			"begin": "(?<=[^\\{]|^)((?:\\{\\{)*)(\\{)(?=[^\\{])",
+			"beginCaptures": {
+				"1": {
+					"name": "string.quoted.interpolated.fsharp"
+				},
+				"2": {
+					"name": "punctuation.definition.string.begin.fsharp"
+				}
+			},
+			"end": "\\}",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.fsharp"
+				}
+			},
+			"patterns": [
+				{
+                    "include": "#strp_inlined_body"
+                },
+                {
+                    "include": "#strp_inlined"
+                },
+                {
+                    "include": "#anonymous_functions"
+                },
+                {
+                    "include": "#attributes"
+                },
+                {
+                    "include": "#comments"
+                },
+                {
+                    "include": "#constants"
+                },
+                {
+                    "include": "#abstract_definition"
+                },
+                {
+                    "include": "#common_binding_definition"
+                },
+                {
+                    "include": "#definition"
+                },
+                {
+                    "include": "#du_declaration"
+                },
+                {
+                    "include": "#keywords"
+                },
+                {
+                    "include": "#modules"
+                },
+                {
+                    "include": "#strings"
+                },
+                {
+					"include": "#variables"
+				},
+                {
+					"include": "#double_tick"
+				},
+                {
+					"include": "#records"
+				},
+                {
+					"include": "#cexprs"
+				},
+                {
+                    "include": "#chars"
+                },
+                {
+                    "include": "#text"
+                },
+                {
+                    "include": "#compiler_directives"
+                }
+			]
+		},
         "variables": {
             "patterns": [
                 {

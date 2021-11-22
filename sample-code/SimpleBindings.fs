@@ -65,6 +65,7 @@ sprintf "75.9%% ss"
 sprintf """
 dfdfdf %s
 """
+let interpolated = $"10 + 1 = {literal_test}"
 
 let numbers = [ 1 .. 10 ]
 let square x = x * x
